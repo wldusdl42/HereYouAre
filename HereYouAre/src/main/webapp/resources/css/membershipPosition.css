@@ -1,0 +1,82 @@
+ul{
+			list-style:none;
+		}
+		.float{
+			float:left;
+			width:70px;
+		}
+		.num{
+			float:left;
+			padding-left:30px;
+			padding-right:30px;
+			padding-top:4vh;
+		}
+		.ulul:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		.float i{
+			position: relative;
+			margin-top:15px;
+			font-size:50px;
+			border:0.8px solid white;
+			margin-left:5px;
+			border-radius:50%;
+			padding:3px;
+			background:white;
+		}
+		.ulul{
+			padding-left:0px;
+		}
+		
+		#absolute { 
+		  font-size:27px;
+		  position: absolute;
+		  top: 124px;   
+		  left:415px;  
+		  width: 30px;
+		  border:0.8px solid rgba(0,0,0,0.0);
+		  border-radius:0%;
+		  background:rgba(0,0,0,0.0);
+		}
+		#add{
+		  font-size:35px;
+		  position: absolute;
+		  top: 123px;   
+		  left:587px;  
+		  width: 30px;
+		  border:0.8px solid rgba(0,0,0,0.0);
+		  border-radius:0%;
+		  background:rgba(0,0,0,0.0);
+		}
+		#cached{
+		  font-size:31px;
+		  position: absolute;
+		  top: 125px;   
+		  left:765px;  
+		  width: 30px;
+		  border:0.8px solid rgba(0,0,0,0.0);
+		  border-radius:0%;
+		  background:rgba(0,0,0,0.0);
+		}
+		#remove{
+		  font-size:33px;
+		  position: absolute;
+		  top: 127px;   
+		  left:948px;  
+		  width: 30px;
+		  border:0.8px solid rgba(0,0,0,0.0);
+		  border-radius:0%;
+		  background:rgba(0,0,0,0.0);
+		}
+		#clear{
+		  font-size:31px;
+		  position: absolute;
+		  top: 127px;   
+		  left:1126px;  
+		  width: 30px;
+		  border:0.8px solid rgba(0,0,0,0.0);
+		  border-radius:0%;
+		  background:rgba(0,0,0,0.0);
+		}

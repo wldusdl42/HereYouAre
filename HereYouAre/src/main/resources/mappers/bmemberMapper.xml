@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.dao.BmemberDAO">
+	<resultMap id="result" type="Bmember">
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+		<result property="phone" column="phone" />
+		<result property="adress" column="adress" />
+		<result property="sex" column="sex" />
+		<result property="age" column="age" />
+		<result property="time" column="time" />
+		<result property="type" column="type" />
+		<result property="checkEmail" column="checkEmail" />
+	</resultMap>
+
+	<update id="update">
+		UPDATE tbl_user
+		SET name = #{name}, age = #{age}, adress = #{adress}, sex = #{sex}, phone
+		= #{phone}
+		WHERE email = #{email}
+	</update>
+
+	<select id="getPwName" parameterType="String" resultMap="result">
+		SELECT * FROM tbl_user WHERE email = #{email}
+	</select>
+
+	<delete id="delete_process">
+		delete from tbl_user WHERE email = #{email}
+	</delete>
+
+	<select id="allUser" resultType="Bmember">
+		SELECT * FROM tbl_user WHERE checkEmail='y';
+	</select>
+
+	<select id="new_user" resultType="Bmember">
+		SELECT * FROM tbl_user WHERE checkEmail='y' and time > DATE_SUB(CURDATE(),
+		INTERVAL 20 DAY);
+	</select>
+
+</mapper>

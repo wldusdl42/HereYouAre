@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.dao.Tbl_heartlistDao">
+
+	<resultMap type="Tbl_heartlist" id="result">
+		<result property="heartId" column="heartId" />
+		<result property="id" column="id" />
+		<result property="email" column="email" />
+		<result property="count" column="count" />
+	</resultMap>
+
+	<select id="getHeartInfo" parameterType="String" resultType="Tbl_heartlist">
+		select * from Tbl_heartlist where email = #{email}
+	</select>
+
+	<insert id="insertHeartInfo" parameterType="Tbl_Heartlist">
+		insert into
+		Tbl_heartlist values(null,#{id},#{email})
+	</insert>
+
+	<delete id="deleteHeartInfo" parameterType="Tbl_heartlist">
+		delete from
+		Tbl_heartlist where id=#{id} and email=#{email}
+	</delete>
+
+	<select id="getAllHeartInfo" resultType="String">
+		select id from
+		Tbl_heartlist;
+	</select>
+
+	<select id="getHeartCount" parameterType="int" resultType="int">
+		select count(*) from Tbl_heartlist where id = #{id}
+	</select>
+
+	<select id="joinArea" parameterType="int" resultType="Tbl_join">
+		SELECT area.id, area.rentType, area.areaPrice, area.areaSize,
+		area.areaAddress
+		FROM tbl_area AS area
+		JOIN tbl_heartlist AS heart
+		WHERE area.id=heart.heartID
+	</select>
+	
+	<delete id="deleteOnMypage" parameterType="int">
+		delete from Tbl_heartlist where heartId=#{id}
+	</delete>
+</mapper>

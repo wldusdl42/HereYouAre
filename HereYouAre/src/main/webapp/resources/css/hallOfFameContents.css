@@ -1,0 +1,78 @@
+@import
+	url('https://fonts.googleapis.com/css?family=Jua|Noto+Serif+KR&display=swap')
+	;
+
+@
+headerH: 90px ;
+body {
+	position: relative;
+	height: auto;
+}
+
+html {
+	line-height: 180%;
+	height: auto;
+}
+
+h1 {
+	font-family: 'Jua', sans-serif;
+	margin-bottom: 20px;
+}
+
+h2 {
+	font-family: 'Jua', sans-serif;
+}
+
+p {
+	font-family: 'Noto Serif KR', serif;
+	color: #474747;
+	font-size: 14px;
+	letter-spacing: 0.6px;
+}
+
+.marginTop {
+	padding-top: 120px;
+}
+
+.wrapperContents {
+	position: relative;
+	/*   overflow: hidden; */
+	z-index: 3;
+}
+
+.container {
+	max-width: 920px;
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.c-containerBar { &:after , &:before {
+    position : fixed;
+	content: "";
+	display: block;
+	z-index: 2;
+}
+
+&
+:after {
+	border-left: 100vw solid white;
+	border-right: 100vw solid white;
+	border-bottom: calc(@ headerH ~ "-" 1) solid white;
+	top: 0;
+}
+
+&
+:before {
+	border-left: 100vw solid white;
+	border-right: 100vw solid white;
+	border-bottom: calc(100vh ~ "-" 91px) solid white;
+	bottom: 0;
+}
+
+}
+.image {
+	height: 460px;
+	width: 100%;
+	margin: 60px auto;
+}

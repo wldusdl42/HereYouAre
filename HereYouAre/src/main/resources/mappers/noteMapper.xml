@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.dao.BmemberDAO4">
+	<resultMap id="result" type="Bmember">
+		<result property="id" column="id" />
+		<result property="sender" column="sender" />
+		<result property="recipient" column="recipient" />
+		<result property="content" column="content" />
+		<result property="view" column="view" />
+		<result property="alerttime" column="alerttime" />
+		<result property="email" column="email" />
+		<result property="keyword" column="keyword" />
+	</resultMap>
+
+
+	<select id="getNote" resultType="Bmember">
+		SELECT * FROM tbl_note WHERE recipient = #{email} ORDER BY id desc;
+	</select>
+
+	<update id="setOne">
+		UPDATE tbl_note
+		SET view = '1'
+		WHERE id = #{id}
+	</update>
+
+	<select id="getNoteByKeyword" parameterType="Bmember"
+		resultType="Bmember">
+		select * from tbl_note where content like
+		CONCAT('%',#{keyword},'%') and recipient = #{email} order by id desc;
+	</select>
+	<insert id="insertNoteByUser" parameterType="Bmember">
+		INSERT INTO tbl_note
+		(id, sender, recipient,content, view, alerttime)
+		VALUES (null,'HereUR',#{sender},'상담신청이 정상적으로
+		되었습니다ꉂꉂ(ᵔᗜᵔ*)ꉂꉂ(ᵔᗜᵔ*)ꉂꉂ(ᵔᗜᵔ*)',null,NOW())
+	</insert>
+
+	<insert id="insertNoteByReal" parameterType="Bmember">
+		INSERT INTO tbl_note
+		(id, sender, recipient,content, view, alerttime)
+		VALUES (null,'HereUR',#{recipient},'새로운 상담신청이 도착
+		하였습니다ꉂꉂ(ᵔᗜᵔ*)ꉂꉂ(ᵔᗜᵔ*)ꉂꉂ(ᵔᗜᵔ*)',null,NOW())
+	</insert>
+
+	<select id="note_content" resultType="String">
+		SELECT content FROM tbl_note WHERE id = #{id};
+	</select>
+	
+	<select id="note_count" resultType="Int">
+		SELECT count(*) FROM tbl_note 
+		WHERE recipient = #{email} and view is null;
+	</select>
+	
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.spring.dao.BmemberDAO1">
+	<resultMap id="result" type="Bmember">
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+		<result property="phone" column="phone" />
+		<result property="adress" column="adress" />
+		<result property="sex" column="sex" />
+		<result property="age" column="age" />
+		<result property="time" column="time" />
+		<result property="type" column="type" />
+		<result property="checkEmail" column="checkEmail" />
+		<result property="realtorNumber" column="realtorNumber" />
+		<result property="ownerNumber" column="ownerNumber" />
+		<result property="checking" column="checking" />
+
+		<result property="agencyName" column="agencyName" />
+		<result property="agencyAddress" column="agencyAddress" />
+		<result property="tel" column="tel" />
+		<result property="evaluation" column="evaluation" />
+	</resultMap>
+
+	<select id="realtor_allInfo" parameterType="String" resultMap="result">
+		SELECT * FROM tbl_realtor WHERE email = #{email}
+	</select>
+
+	<select id="allRealtor" resultType="Bmember">
+		SELECT * FROM tbl_realtor WHERE checkEmail='y' and checking='y';
+	</select>
+
+	<select id="insertRequest" resultType="Bmember">
+		SELECT * FROM tbl_realtor WHERE checkEmail='y' and checking is null;
+	</select>
+
+	<update id="request">
+		update tbl_realtor set checking = 'y' WHERE email = #{email}
+	</update>
+
+	<update id="real_update">
+		UPDATE tbl_realtor
+		SET name = #{name}, age = #{age}, adress = #{adress}, sex = #{sex}, phone
+		= #{phone}
+		WHERE email = #{email}
+	</update>
+
+	<select id="new_real" resultType="Bmember">
+		SELECT * FROM tbl_realtor WHERE checkEmail='y' and checking='y' and time >
+		DATE_SUB(CURDATE(), INTERVAL 20 DAY);
+	</select>
+	
+	<select id="selectTop10" resultType="Bmember">
+		select *  FROM tbl_realtor ORDER BY evaluation desc;
+	</select>
+</mapper>

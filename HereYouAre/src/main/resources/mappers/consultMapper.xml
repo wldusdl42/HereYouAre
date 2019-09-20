@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.dao.BmemberDAO6">
+	<resultMap id="result" type="Bmember">
+	 	<result property="timeId" column="timeId"/>
+        <result property="sender" column="sender"/>
+        <result property="recipient" column="recipient"/>  
+        <result property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="phoneNum" column="phoneNum"/>  
+        <result property="consultType" column="consultType"/>
+        <result property="requestTime" column="requestTime"/>
+        <result property="receiptTime" column="receiptTime"/>  
+        <result property="endTime" column="endTime"/>  
+        <result property="consultStatus" column="consultStatus"/>
+        <result property="evaluation" column="evaluation"/>  
+        <result property="matching" column="matching"/> 
+        <result property="email" column="email"/>   
+        <result property="evaluation_reason" column="evaluation_reason"/>  
+    </resultMap>
+    
+    <insert id="insertConultList" parameterType="Bmember">
+         INSERT INTO tbl_consult  
+        (timeId, sender, recipient, id, content, phoneNum, consultType, requestTime, receiptTime, endTime, consultStatus, evaluation, matching)
+        VALUES (null,#{sender},#{recipient},#{id},#{content},#{phoneNum},#{consultType},NOW(),null,null,'0',null,null)
+    </insert>
+    
+    <select id="consultList" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE sender=#{email} ORDER BY timeId desc;
+    </select>
+    
+    <select id="consultList0" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE sender=#{email} and consultStatus='0' ORDER BY timeId desc;
+    </select>
+    
+    <select id="consultList1" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE sender=#{email} and consultStatus='1' ORDER BY timeId desc;
+    </select>
+    
+    <select id="consultList2" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE sender=#{email} and consultStatus='2' ORDER BY timeId desc;
+    </select>
+    
+    <select id="consultList3" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE sender=#{email} and consultStatus='3' ORDER BY timeId desc;
+    </select>
+    
+    <select id="consultList4" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE sender=#{email} and consultStatus='4' ORDER BY timeId desc;
+    </select>
+    
+    <select id="realConsult" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE recipient=#{email} ORDER BY timeId desc;
+    </select>
+    
+   <select id="realConsult0" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE recipient=#{email} and consultStatus='0' ORDER BY timeId desc;
+    </select>
+    
+    <select id="realConsult1" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE recipient=#{email} and consultStatus='1' ORDER BY timeId desc;
+    </select>
+    
+    <select id="realConsult2" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE recipient=#{email} and consultStatus='2' ORDER BY timeId desc;
+    </select>
+    
+    <select id="realConsult3" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE recipient=#{email} and consultStatus='3' ORDER BY timeId desc;
+    </select>
+    
+    <select id="realConsult4" resultType="Bmember">
+        SELECT * FROM tbl_consult WHERE recipient=#{email} and consultStatus='4' ORDER BY timeId desc;
+    </select>
+    
+     <update id="set1" >
+    	UPDATE tbl_consult 
+      	SET consultStatus = '1' , receiptTime = NOW()
+      	WHERE timeId = #{timeId} and sender = #{sender}
+     </update>
+    
+    <update id="set2" >
+    	UPDATE tbl_consult 
+      	SET consultStatus = '2' , endTime = NOW()
+      	WHERE timeId = #{timeId} and sender = #{sender}
+    </update>
+    
+    <update id="set3" >
+    	UPDATE tbl_consult 
+      	SET consultStatus = '3' ,evaluation =#{evaluation} , evaluation_reason = #{evaluation_reason} 
+      	WHERE timeId = #{timeId}
+    </update>
+    
+     
+</mapper>

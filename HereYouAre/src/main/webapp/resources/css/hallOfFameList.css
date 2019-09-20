@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css?family=Jua|Noto+Serif+KR&display=swap');
+
+html {
+/*     background-color: #eefbf8; */
+}
+
+.fame-background{
+	height: 900px;
+    background-image: url("../img/HallofFame_BackGround_0903_1903_900.jpg");
+    background-repeat: no-repeat;
+	z-index: 0;
+}
+.page-section h2.section-heading {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.page-section h3.section-subheading {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 75px;
+  text-transform: none;
+  font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.wrapper {
+    position: relative;
+    display: inline-block;
+    width: 1245px;
+    height: 561px;
+    left: 27px;
+    top: 73px;
+}
+.slider-middle {
+    position: absolute;
+    width: 40%;
+    height: 70%;
+    left: 30%;
+    bottom: 10%;
+    z-index: 100;
+    transition-duration: 1s;
+/*     box-shadow: 1px 15px 15px -5px gray; */
+/*     border: 10px solid #22130c; */
+}
+.slider-middle:before{
+	background-color: #22130c;
+    bottom: -2.5em;
+    box-shadow: inset 0 1px 1px 1px hsla(0,0%,100%,.2),
+                inset 0 -2px 1px hsla(0,0%,0%,.4),
+                0 5px 50px hsla(0,0%,0%,.25),
+                0 20px 20px -15px hsla(0,0%,0%,.2),
+                0 30px 20px -15px hsla(0,0%,0%,.15),
+                0 40px 20px -15px hsla(0,0%,0%,.1);
+    content: '';
+    left: -2.5em;
+    position: absolute;
+    right: -2.5em;
+    top: -2.5em;
+    z-index: -1;
+}
+.slider-left-1 {
+    position: absolute;
+    width: 20%;
+    height: 35%;
+    left: 12%;
+    bottom: 15%;
+    z-index: 99;
+    transition-duration: 1s;
+    color: #fff;
+    opacity: 0;
+}
+.slider-left-2 {
+    position: absolute;
+    width: 14%;
+    height: 22%;
+    left: 0;
+    bottom: 18%;
+    z-index: 98;
+    transition-duration: 1s;
+    opacity: 0;
+}
+.slider-right-1 {
+    position: absolute;
+    width: 20%;
+    height: 35%;
+    left: 68%;
+    bottom: 15%;
+    z-index: 99;
+    transition-duration: 1s;
+    opacity: 0;
+}
+.slider-right-2 {
+    position: absolute;
+    width: 14%;
+    height: 22%;
+    left: 86%;
+    bottom: 18%;
+    z-index: 98;
+    transition-duration: 1s;
+    opacity: 0;
+}
+
+.slider-hide {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition-duration: 1s;
+}
+#slider-btn {
+    display: none;
+}
+
+#slider-btn .prev-btn {
+    position: absolute;
+    top: 50%;
+    left: 31%;
+    z-index: 200;
+    color: #fff;
+    cursor: pointer;
+}
+#slider-btn .next-btn {
+    position: absolute;
+    top: 50%;
+    left: 66%;
+    z-index: 200;
+    color: #fff;
+    cursor: pointer;
+}
+[class^=arr-] {
+    /* Arrows @RCB */
+    border: solid currentColor;
+    border-width: 0 0.15em 0.15em 0;
+    display: inline-block;
+    padding: 0.5em;
+}
+.arr-right {
+    transform: rotate(-45deg);
+}
+.arr-left {
+    transform: rotate(135deg);
+}
+
+#rotate-slider {
+    display: none;
+}
+.title{
+	font-family: 'Jua', sans-serif;
+	color: black;
+	text-decoration: none;
+}
+
+
+
+
+/* #nameBoard-box {
+	width: 300px;
+	height: 50px;
+	background-color: white;
+    box-shadow: 0px 10px 10px 0px #A4A4A4;
+	position: absolute;
+	left: 400px;
+	top: 530px;
+	text-align: center;
+	line-height: 50px;
+	display: block;
+	font-family: 'Jua', sans-serif;
+} */
+
+.wrapper2 {
+    position: relative;
+    display: inline-block;
+    width: 700px;
+    height: 100px;
+    left: 630px;
+    text-align: center;
+    top: 80px;
+}
+
+.box-middle {
+    position: absolute;
+    width: 40%;
+    height: 50%;
+    left: 30%;
+    bottom: 10%;
+    z-index: 100;
+    transition-duration: 1s;
+    box-shadow: 1px 5px 5px -5px #484848;
+    padding-top: 13px;
+    background-color: white;
+    font-size: 18px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.box-left-1 {
+    position: absolute;
+    width: 20%;
+    height: 35%;
+    left: 12%;
+    bottom: 15%;
+    z-index: 99;
+    opacity: 0;
+    transition-duration: 1s;
+}
+.box-left-2 {
+    position: absolute;
+    width: 14%;
+    height: 22%;
+    left: 0;
+    bottom: 18%;
+    z-index: 98;
+    opacity: 0;
+    transition-duration: 1s;
+}
+.box-right-1 {
+    position: absolute;
+    width: 20%;
+    height: 35%;
+    left: 68%;
+    bottom: 15%;
+    z-index: 99;
+    opacity: 0;
+    transition-duration: 1s;
+}
+.box-right-2 {
+    position: absolute;
+    width: 14%;
+    height: 22%;
+    left: 86%;
+    bottom: 18%;
+    z-index: 98;
+    opacity: 0;
+    transition-duration: 1s;
+}
+
+.box-hide {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition-duration: 1s;
+}
+#box-btn {
+    display: none;
+}
+
+#box-btn .prev-btn {
+    position: absolute;
+    top: 50%;
+    left: 31%;
+    z-index: 200;
+    color: #fff;
+    cursor: pointer;
+}
+#box-btn .next-btn {
+    position: absolute;
+    top: 50%;
+    left: 66%;
+    z-index: 200;
+    color: #fff;
+    cursor: pointer;
+}
+[class^=arr-] {
+    /* Arrows @RCB */
+    border: solid currentColor;
+    border-width: 0 0.15em 0.15em 0;
+    display: inline-block;
+    padding: 0.5em;
+}
+.arr-right {
+    transform: rotate(-45deg);
+}
+.arr-left {
+    transform: rotate(135deg);
+}
+
+#nameBoard-box {
+    display: none;
+}
+
+
+
+
+
+
+
+/* Images from Craig Henry's Dribbble profile: http://dribbble.com/craighenry */
+
+
+
+  /**********/
+ /* Slider */
+/**********/
+
+.slider1 {
+    background-color: #fff;
+    box-shadow: inset 0 0 2px hsla(0,0%,0%,.2),
+                0 3px 1px hsla(0,0%,100%,.75),
+                0 -1px 1px 2px hsla(0,0%,0%,.1);
+    height: 25.7em;
+    left: 48.7%;
+    margin: -9.875em -13em;
+    padding: .5em;
+    position: absolute;
+    top: 39.7%;
+    width: 29.2em;
+    z-index: 80;
+}
+.banner_inner {
+    height: 100vh;
+    overflow: hidden;
+    width: 100%;
+}
+/* Frame */
+
+.slider1:before {
+    background-color: #22130c;
+    bottom: -2.5em;
+    box-shadow: inset 0 1px 1px 1px hsla(0,0%,100%,.2),
+                inset 0 -2px 1px hsla(0,0%,0%,.4),
+                0 5px 50px hsla(0,0%,0%,.25),
+                0 20px 20px -15px hsla(0,0%,0%,.2),
+                0 30px 20px -15px hsla(0,0%,0%,.15),
+                0 40px 20px -15px hsla(0,0%,0%,.1);
+    content: '';
+    left: -2.5em;
+    position: absolute;
+    right: -2.5em;
+    top: -2.5em;
+    z-index: 1;
+}
+
+/* Mat */
+
+.slider1:after {
+    background-color: #fff5e5;
+    bottom: -1.5em;
+    box-shadow: 0 2px 1px hsla(0,0%,100%,.2),
+                0 -1px 1px 1px hsla(0,0%,0%,.4),
+                inset 0 2px 3px 1px hsla(0,0%,0%,.2),
+                inset 0 4px 3px 1px hsla(0,0%,0%,.2),
+                inset 0 6px 3px 1px hsla(0,0%,0%,.1);
+    content: '';
+    left: -1.5em;
+    position: absolute;
+    right: -1.5em;
+    top: -1.5em;
+    z-index: 1;
+}
+/* Slides */
+
+.slider1 li {
+    box-shadow: 0 -1px 0 2px hsla(0,0%,0%,.03);
+    list-style:none;
+    position: absolute;
+}
+.slider1 input {
+    display: none;
+}

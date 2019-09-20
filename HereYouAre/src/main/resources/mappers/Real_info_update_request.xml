@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.dao.BmemberDAO7">
+	<resultMap id="result" type="Bmember">
+		<result property="email" column="email" />
+		<result property="realtorNumber" column="realtorNumber" />
+		<result property="ownerNumber" column="ownerNumber" />
+		<result property="agencyName" column="agencyName" />
+		<result property="agencyAddress" column="agencyAddress" />
+		<result property="tel" column="tel" />
+		<result property="id" column="id" />
+		<result property="time" column="time" />
+	</resultMap>
+
+	<insert id="reqestMod" parameterType="Bmember">
+		INSERT INTO real_req
+		(id,email, realtorNumber, ownerNumber, agencyName, agencyAddress, tel,time)
+		VALUES
+		(null,#{email},#{realtorNumber},#{ownerNumber},#{agencyName},#{agencyAddress},#{tel},NOW())
+
+	</insert>
+
+	<select id="update_req" resultType="Bmember">
+		SELECT * FROM real_req;
+	</select>
+
+</mapper>

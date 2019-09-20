@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://192.168.100.124:3306/HereYouAre_db?serverTimezone=UTC" /> 
+			
+<!-- 		<property name="url" -->
+<!-- 			value="jdbc:mysql://localhost:3306/HereYouAre_db" />  -->
+		<property name="username" value="root" />
+		<property name="password" value="user1234" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+		<!-- <property name="mapperLocations" value="classpath:mappers/*.xml"></property> -->
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+
+
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+	<bean id="noticeBoardDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.NoticeBoardDAO"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="noticeBoardServcImpl" class="com.spring.service.NoticeBoardServiceImpl">
+		<property name="nbDao" ref="noticeBoardDao" />
+	</bean>
+
+	<bean id="hallOfFameDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.HallOfFameDAO"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="famemeBoardServcImpl" class="com.spring.service.HallOfFameServiceImpl">
+		<property name="hfDao" ref="hallOfFameDao" />
+	</bean>
+
+
+
+	<bean id="BmemberDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.BmemberDAO"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="BmemberDAO1" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.BmemberDAO1"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="BmemberDAO3" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.BmemberDAO3"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="BmemberDAO4" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.BmemberDAO4"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="BmemberDAO5" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.BmemberDAO5"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="BmemberDAO6" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.BmemberDAO6"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="BmemberDAO7" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.BmemberDAO7"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+	
+	<bean id="BmemberDAO8" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.BmemberDAO8"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="BmemberServiceImpl" class="com.spring.service.BmemberServiceImpl">
+		<property name="empDao" ref="BmemberDAO" />
+		<property name="empDao1" ref="BmemberDAO1" /><!-- 추가됨 -->
+		<property name="empDao3" ref="BmemberDAO3" /><!-- 추가됨 -->
+		<property name="empDao4" ref="BmemberDAO4" /><!-- 추가됨 -->
+		<property name="empDao5" ref="BmemberDAO5" /><!-- 추가됨 -->
+		<property name="empDao6" ref="BmemberDAO6" /><!-- 추가됨 -->
+		<property name="empDao7" ref="BmemberDAO7" /><!-- 추가됨 -->
+		<property name="empDao8" ref="BmemberDAO8" /><!-- 추가됨 -->
+	</bean>
+
+
+
+	<bean id="tbl_areaDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.Tbl_areaDao"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="tbl_areaServiceImpl" class="com.spring.service.Tbl_areaServiceImpl">
+		<property name="dao" ref="tbl_areaDao" />
+	</bean>
+
+	<bean id="tbl_heartlistDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.Tbl_heartlistDao"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="tbl_heartlistServiceImpl" class="com.spring.service.Tbl_heartlistServiceImpl">
+		<property name="dao" ref="tbl_heartlistDao" />
+	</bean>
+
+	<bean id="DaoImpl" class="com.spring.dao.DaoImpl">
+	</bean>
+	<bean id="ServiceImpl" class="com.spring.service.ServiceImpl">
+		<property name="dao" ref="DaoImpl" />
+	</bean>
+
+
+	<bean id="JoinDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.spring.dao.JoinDAO"></property>
+		<property name="sqlSessionTemplate" ref="sqlSession"></property>
+	</bean>
+
+	<bean id="JoinServiceImpl" class="com.spring.service.JoinServiceImpl">
+		<property name="dao" ref="JoinDAO" />
+	</bean>
+
+
+</beans>

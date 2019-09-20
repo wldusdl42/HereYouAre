@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    -ms-flex: 1 1 auto;
+    -ms-flex-direction: column;
+}
+
+.header {
+    flex: 0 0 auto;
+    padding: 20px 20px 0;
+    border-bottom: 1px solid #dddddd;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.content {
+  margin-left:20px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.p3 {
+    font-size: 13px;
+    color: rgb(33, 33, 33);
+    margin: 0px;
+    -webkit-text-stroke: rgb(33, 33, 33);
+}
+
+b {
+  font-weight: bold;
+  font-size:14px;
+}

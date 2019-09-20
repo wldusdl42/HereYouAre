@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+    
+<configuration>
+  <typeAliases>
+        <typeAlias alias="NoticeBoard" type="com.spring.dto.NoticeBoard"/>  
+        <typeAlias alias="HallOfFame" type="com.spring.dto.HallOfFame"/> 
+        <typeAlias alias="Bmember" type="com.spring.dto.Bmember"/>        
+        <typeAlias type="com.spring.dto.Tbl_area" alias="Tbl_area"/>
+   		<typeAlias alias="JoinUser" type="com.spring.dto.JoinUser"/>
+		<typeAlias alias="JoinRealtor" type="com.spring.dto.JoinRealtor"/>
+		<typeAlias alias="Tbl_heartlist" type="com.spring.dto.Tbl_heartlist"/>
+		<typeAlias alias="Tbl_join" type="com.spring.dto.Tbl_join"/>
+        
+    </typeAliases>
+    <mappers>		
+    	<mapper resource ="mappers/fameBoardMapper.xml"/>
+    	<mapper resource ="mappers/noticeBoardMapper.xml"/>
+    	
+    	<mapper resource ="mappers/bmemberMapper.xml"/> <!-- 일반회원 -->
+    	<mapper resource ="mappers/realtorMapper.xml"/> <!-- 공인중개사 -->
+   		<mapper resource ="mappers/deleteMapper.xml"/> <!-- 탈퇴회원 -->
+   		<mapper resource ="mappers/noteMapper.xml"/> <!-- 알림 -->
+   		<mapper resource ="mappers/adminMapper.xml"/> <!-- 어드민 -->
+   		<mapper resource ="mappers/consultMapper.xml"/> <!-- 상담내역 -->
+   		<mapper resource ="mappers/Real_info_update_request.xml"/> <!-- 부동산정보 업데이트 -->
+   		<mapper resource ="mappers/todoList.xml"/> <!-- todoList -->
+   		
+   		<mapper resource ="mappers/Tbl_area-Mapper.xml"/> <!-- 매물 -->
+   		
+   		<mapper resource ="mappers/JoinUserDAO-Mapper.xml"/> <!-- 알림 -->
+   		<mapper resource ="mappers/Tbl_heartlist-Mapper.xml"/>
+	</mappers>	
+</configuration>

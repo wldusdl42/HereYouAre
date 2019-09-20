@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.dao.HallOfFameDAO">
+
+	<resultMap type="HallOfFame" id="result">
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="contents" column="contents" />
+		<result property="write_time" column="write_time" />
+		<result property="contents_image" column="contents_image" />
+	</resultMap>
+
+	<insert id="saveHallOfFame" parameterType="HallOfFame">
+		INSERT INTO HallOfFame VALUES
+		(#{id},#{title},#{contents},curdate(),#{contents_image})
+	</insert>
+
+	<select id="getAllCount" resultType="int">
+		select count(*) as id from halloffame
+	</select>
+
+	<select id="getHallOfFame" parameterType="int" resultType="HallOfFame">
+		SELECT * FROM halloffame WHERE id = #{id};
+	</select>
+
+	<select id="getHallOfFameList" parameterType="int" resultType="HallOfFame">
+		SELECT * FROM halloffame ORDER BY id DESC
+	</select>
+</mapper>

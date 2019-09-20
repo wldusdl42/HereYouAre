@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.spring.dao.BmemberDAO3">
+	<resultMap id="result" type="Bmember">
+        <result property="email" column="email"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>  
+        <result property="time" column="time"/>
+        <result property="type" column="type"/>
+        <result property="reason" column="reason"/>
+        <result property="reason_write" column="reason_write"/>
+        <result property="realtorNumber" column="realtorNumber"/>
+        <result property="delete_time" column="delete_time"/>
+        <result property="request" column="request"/>
+        <result property="requestTime" column="requestTime"/>
+    </resultMap>
+    
+ 	<insert id="saveEmployee" parameterType="Bmember">
+         INSERT INTO tbl_delete_user  
+        (email, age, sex, reason, reason_write, time, delete_time, type,request)
+        VALUES (#{email},#{age},#{sex},#{reason},#{reason_write},#{time},NOW(),#{type},'1')
+    </insert>
+    
+    <select id="deleteMember" resultType="Bmember">
+        SELECT * FROM tbl_delete_user where request ='1'; 
+    </select>
+    
+    <insert id="saveDelreal" parameterType="Bmember">
+         INSERT INTO tbl_delete_user  
+        			(email, age, sex, reason, reason_write, time, delete_time, type, realtorNumber,request,requestTime)
+        VALUES (#{email},#{age},#{sex},#{reason},#{reason_write},#{time},null,#{type},#{realtorNumber},null,NOW())
+    </insert>
+    
+     <select id="delete_Req" resultType="Bmember">
+        SELECT * FROM tbl_delete_user where type=2 and request is null; 
+    </select>
+    
+</mapper>
