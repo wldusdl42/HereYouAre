@@ -34,8 +34,6 @@ public class NoticeBoardController {
    @RequestMapping(value = "/noticeBoardAdd",method=RequestMethod.GET)
     public String noticeBoardAdd(NoticeBoard noticeBoard, HttpServletRequest request, String editor)
     {
-//	   String content=request.getParameter("contents");
-//	   content = content.replace("\r\n","<br>");
 	   String content = editor;
 	   noticeBoard.setContents(content);
        System.out.println("noticeBoardAdd");
@@ -122,66 +120,7 @@ public class NoticeBoardController {
       model.addAttribute("noticeBoard", noticeBoard);
       return "NoticeBoard/getNoticeBoardContents";
     }
-   
-//    @RequestMapping(value="/noticeSearch",method=RequestMethod.GET)
-//    @ResponseBody
-//    public Map<String, Object> noticeSearch(@RequestParam("keyword") String keyword, @RequestParam("page_id") String page_id, HttpSession session) {
-//       Map<String, Object> result = new HashMap<String, Object>();
-//      PageMaker2 pm2 = new PageMaker2();
-//       int pageid = Integer.parseInt(page_id);
-//       pm2.setKeyword(keyword);
-//       System.out.println("page-id : "+pageid);
-//       System.out.println("keyword : "+keyword);
-//       result.put("page_id", pageid);
-//       
-//      int nBlockStart = 1;
-//      int nBlockEnd = 10;
-//       int allCount = noticeBoardSvc.getAllCount();
-//      int total = 10;
-//      int maxPageNum=0;
-//      if(allCount%total!=0)
-//      {
-//         maxPageNum=allCount/total+1;
-//      }
-//      result.put("maxPageNum", maxPageNum);
-//      for(int i=11; i<=pageid; i+=10)
-//      {
-//         if(pageid / i == 1.0) {
-//            nBlockStart = i;
-//            nBlockEnd = nBlockStart + 9;
-//            if(nBlockEnd > maxPageNum) {
-//               nBlockEnd = maxPageNum;
-//            }
-//         }
-//      }
-//      result.put("nBlockStart", nBlockStart);
-//      result.put("nBlockEnd", nBlockEnd);
-//      if(pageid == 1) {
-//         // do nothing!
-//      } else {
-//         pageid= (pageid-1)*total+1;
-//      }
-//      
-//      pm2.setPageid(pageid-1);
-//      pm2.setTotal(total);
-//       
-//       List<NoticeBoard> list = noticeBoardSvc.getNoticeSearch(pm2);
-//       result.put("list", list); // 받아온 쿼리 리스트를 hashmap에 담는다.
-//       System.out.print("list:"+list);
-//        return result; 
-//    } 
-   
-   
-   
-//   @RequestMapping(value = "/search",method=RequestMethod.GET)
-//    public String listSearch(HttpServletRequest request, HttpServletResponse response)
-//    {
-//       System.out.println("listSearch");
-//       return "redirect:/search/1";
-//    }
-   
-   
-   
+	
    @RequestMapping(value= "/search/{page_id}", method= RequestMethod.GET) 
    public ModelAndView listNoticeBoardSearch(@PathVariable int page_id, HttpServletRequest request, HttpServletResponse response, Model model) {
       String keyword = request.getParameter("keyword");
